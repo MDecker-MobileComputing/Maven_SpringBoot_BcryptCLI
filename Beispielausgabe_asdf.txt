@@ -1,0 +1,42 @@
+
+Passwort zum Verhaschen mit Bcrypt eingeben > asdf
+
+Anzahl Zeichen von Passwort: 4
+
+Hashwert mit Cost=4 in 4ms berechnet: $2b$04$glLHCBHUuPg7wWcxFKLkyObVPnjhM9qoxofPYHfLssWfp.S/k/9ze
+
+Hashwert mit Cost=5 in 4ms berechnet: $2b$05$F82eY.zCt9BOcijMlrYRhudIi8lh9jagNlJVqTWgsWjSK7mENBaVy
+
+Hashwert mit Cost=6 in 4ms berechnet: $2b$06$9AvqpOQEWtWWhlOB4rCFFO7p0MUnYPo6aFM5v5m7oHsJVHUjpKBSW
+
+Hashwert mit Cost=7 in 7ms berechnet: $2b$07$.8cdVNBalsWJJdQ2STXn2ek6o2egReeg0la2xQ6CVTJqZxy3.JhR2
+
+Hashwert mit Cost=8 in 14ms berechnet: $2b$08$AGZ/s3OQ9GbpGiHcRRcN6uYBdOvAYmWcMDe/7cFdFe6alxMEtzR.O
+
+Hashwert mit Cost=9 in 27ms berechnet: $2b$09$FvZZa90en841UxAaATDTv.q3IPOKtt22HOiGnmLT96L8hWz1Ec3cO
+
+Hashwert mit Cost=10 in 54ms berechnet: $2b$10$uQ8PGxPkpy3H.fDQ9P84zORKWTlmn1jBy3lDgOGgW21exVkhpshYC
+
+Hashwert mit Cost=11 in 108ms berechnet: $2b$11$I/UrM/eqnY6oBdMs3o7nqeBSToL7r7iqHiyFqqSZ/TWaa9ltmx7UW
+
+Hashwert mit Cost=12 in 214ms berechnet: $2b$12$Wvj/3lUi4Wzz4kV8RHNk1.4KubU3.6HHAxV9pKSNcYQTjF0oq/C4O
+
+Hashwert mit Cost=13 in 434ms berechnet: $2b$13$aC0EdKnmnzQjH10Al3oxoOclPmpCQzjZDNVnGkjrzYy.fOh3pMoGi
+
+Hashwert mit Cost=14 in 866ms berechnet: $2b$14$f7O9LNrTb6/yIPbDglAXCeuWGvcf2fw22xsZ5hFbUXD0sojzFwVZK
+
+Hashwert mit Cost=15 in 1.735ms berechnet: $2b$15$XU4j.BEWQGA6yjnQ9YQ2BeSm0FKM5voiH5vsb17IoSd0vUOO3qZ8C
+
+Hashwert mit Cost=16 in 3.620ms berechnet: $2b$16$bX9uUDPoIwmgnqW1ykYKGOS1F0pNYS7L84eM6aQM5XZocxNG/XL4C
+
+Hashwert mit Cost=17 in 7.122ms berechnet: $2b$17$vPRxYJXKAOFrz.YD1J0Ytu1hJCb6KU2bYagqeSbAZMbcG0ql3xjPO
+
+Hashwert mit Cost=18 in 14.342ms berechnet: $2b$18$HVHOuOsRc3nq37e96JOqeOL1dJvhlvtGavO67mLPqSjPFGAGxbg/m
+
+Hashwert mit Cost=19 in 29.072ms berechnet: $2b$19$kuuStSRaoy9HQ400y5xR8OlO5TCodcxaHWpA0KD2zeDU1IGEO8M6.
+
+Hashwert mit Cost=20 in 57.348ms berechnet: $2b$20$iKHM55oKEG1m7tGZWsez0eAdO.B.XaDpKgRqv99kP8PfEbxNzMPRq
+
+Hashwert mit Cost=21 in 114.437ms berechnet: $2b$21$3hNcsUp/LnoEPmvQ2ddl0OcsakotYdOARcgHb9N73JRH6792HaVNK
+
+Hashwert mit Cost=22 in 226.550ms berechnet: $2b$22$cj1J0N4L3/jLgbx24JYDsO4Hka5LExNHLf2xIpCFA2MbXAvVge.ni

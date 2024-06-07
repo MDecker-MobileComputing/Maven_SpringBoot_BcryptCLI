@@ -10,6 +10,20 @@ verhasht wird.
 
 ----
 
+## Beispielausgaben ##
+
+<br>
+
+[Beispielausgabe für Verhashung von Passwort "asdf"](./Beispielausgabe_asdf.txt)
+
+<br>
+
+[Beispielausgabe für Verhashung von Passwort "asdf1234abcd"](./Beispielausgabe_asdf1234abcd.txt)
+
+<br>
+
+----
+
 ## License ##
 
 <br>

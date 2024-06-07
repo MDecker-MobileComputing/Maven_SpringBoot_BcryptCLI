@@ -71,7 +71,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      *
      * <b>Beispielausgabe:</b>
      * <pre>
-     * Hashwert mit Cost=16 in 3.478 ms berechnet: $2b$16$0Y959yqgpRsOEUnOXFLc9e4RBG2MVXywGVl70hLPcJkrW3rULM/H2
+     * Hashwert mit Cost=16 in 3.478ms berechnet: $2b$16$0Y959yqgpRsOEUnOXFLc9e4RBG2MVXywGVl70hLPcJkrW3rULM/H2
      * </pre>
      *
      * @param passwort Passwort, das verhasht werden soll
@@ -101,7 +101,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
         final long millisekunden = ( zeitpunktEnde - zeitpunktStart ) / 1_000_000;
 
         final String str =
-                String.format( "\nHashwert mit Cost=%d in %,d ms berechnet: %s",
+                String.format( "\nHashwert mit Cost=%d in %,dms berechnet: %s",
                                kostenFaktor, millisekunden, hashwert );
 
         System.out.println( str );

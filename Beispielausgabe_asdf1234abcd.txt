@@ -1,0 +1,42 @@
+
+Passwort zum Verhaschen mit Bcrypt eingeben > asdf1234abcd
+
+Anzahl Zeichen von Passwort: 12
+
+Hashwert mit Cost=4 in 4ms berechnet: $2b$04$JoNUKOOr3Q4BVOhB6pWtoenFBhoEm1ms.gcwJMKv2H0g4oEEDsOlu
+
+Hashwert mit Cost=5 in 4ms berechnet: $2b$05$l8YEqB0LglwIrc..4u5uEe1slMSSRvx2yiwtxSUG150JU7ozJUTey
+
+Hashwert mit Cost=6 in 4ms berechnet: $2b$06$8ybIjW2xa1GuznW2sKzAeu1/yLqe28.gVuzNU0XjBFWnCqPR3wvZK
+
+Hashwert mit Cost=7 in 7ms berechnet: $2b$07$7MwbqNDCqHa.e1QxNPAP9eBYBoFuzgpffjfEGtdiz/nzG18aMbxxG
+
+Hashwert mit Cost=8 in 14ms berechnet: $2b$08$o/XSHkHAFVJPDBbUcgxS8umOlcjebp4ZSFbmFTWREBxIX733a/r06
+
+Hashwert mit Cost=9 in 27ms berechnet: $2b$09$4leukaDmql8y2c9uWWapdu7nVCcVzPJTGAGStwkIdFZuPhquUwhQC
+
+Hashwert mit Cost=10 in 54ms berechnet: $2b$10$dE70TX4P3OVAKtGIKjhlA.Dsv3LO6HcPnHl/7D0C.8ZmczR8XnWji
+
+Hashwert mit Cost=11 in 108ms berechnet: $2b$11$KDMoXtXHyQeWIS/dshjWTuu.Q/X3ON8qMIfI/aIL3Rx60Ab9U6Ozu
+
+Hashwert mit Cost=12 in 214ms berechnet: $2b$12$DDkpft44KohxVUSzLYx30utBXlYMxF3fBMiHPrdu0OhKqQhtbnRoS
+
+Hashwert mit Cost=13 in 429ms berechnet: $2b$13$9FMQfkQSND2LiYtCvmsl6Os3UrOPyNEq4n75UMexItWK01MKkB.4O
+
+Hashwert mit Cost=14 in 871ms berechnet: $2b$14$NYuHGQ/yc18c5LQnVs3LC.xf/2ydjBsBYB6mCgLgLvpH2erakwBfi
+
+Hashwert mit Cost=15 in 1.751ms berechnet: $2b$15$niaEBoojggb5Kil44Ih0fOvu1Q0oXFrjy.LvSsrJ0.dJReEANtjsq
+
+Hashwert mit Cost=16 in 3.515ms berechnet: $2b$16$1EpUC2XBEeVs7s6vDzMj4eV/bLhH7VjT.6sQQZOYce1VoPJEkDETu
+
+Hashwert mit Cost=17 in 7.083ms berechnet: $2b$17$LZnNeupEFOAkn8WNvFuJz.JTq5sqiA0/V0z1RrUkbmaIkYdRrAH4q
+
+Hashwert mit Cost=18 in 14.308ms berechnet: $2b$18$EcO2/28xl/wczHh4rsRbHuAiEbGW3oAXvSKKwFBLNQVNE7WMZVVbC
+
+Hashwert mit Cost=19 in 28.642ms berechnet: $2b$19$NZKERgOSLHuBG7zAwG76UO1iiYzC5Xhle5BVGqdYAJgMcF1qK5l1.
+
+Hashwert mit Cost=20 in 57.417ms berechnet: $2b$20$QxKmUucUTXFYchkTbXnFJ.uCxfBJoTqudTG7hxmRyGq0N0DGtgjVK
+
+Hashwert mit Cost=21 in 117.209ms berechnet: $2b$21$wdI3ZmGVjW9AYStBzMHB9.zseIAsHcVrJCYUuIan/GylU7iBxhmva
+
+Hashwert mit Cost=22 in 229.447ms berechnet: $2b$22$LefU0BX/ZUxypuya566QNezvwYmM2Wd9PKxzyK4UvoUoo3Wj1jpNW

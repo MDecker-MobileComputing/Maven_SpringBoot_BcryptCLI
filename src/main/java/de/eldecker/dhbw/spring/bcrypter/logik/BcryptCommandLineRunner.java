@@ -36,7 +36,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      */
     final SecureRandom _zufallsgenerator = new SecureRandom();
 
-    /** Text-Scanner für Einlesen Nutzereingaben von STDIN. */
+    /** Text-Scanner für Einlesen Nutzereingabe (Passwort) von Tastatur. */
     final Scanner _scanner = new Scanner( System.in );
 
 
@@ -44,7 +44,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      * Es wird ein Passwort vom Nutzer angefragt (Eingabe per Tastatur)
      * und dann ein Hash-Wert für alle zulässigen Kostenfaktoren von 4
      * bis 31 berechnet. Der Hash-Wert wird zusammen mit der Laufzeit
-     * auf der Konsole ausgegeben.
+     * in Millisekunden (ms) auf der Konsole ausgegeben.
      * <br><br>
      *
      * Diese Methode wird beim Programmstart automatisch aufgerufen.
@@ -84,7 +84,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      * <li>$2b: Version des Algorithmus, hier neueste Version von 2014</li>
      * <li>$16$: Kostenfaktor
      * <li>nächste 22 Zeichen: 128Bit-Salt, mit Base64 kodiert</li>
-     * <li>31 Zeichen: 184Bit-Hash-Wert, mit Base64 kodiert</li> 
+     * <li>31 Zeichen: 184Bit-Hash-Wert, mit Base64 kodiert</li>
      * <ul>
      *
      * @param passwort Passwort, das verhasht werden soll
@@ -94,7 +94,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      *                     je höher der Wert, desto länger dauert die Berechnung.
      *                     Die Anzahl der Runden für die Verhashung wird mit
      *                     {@code 2^kostenFaktor} berechnet, also für {@code 12} bspw.
-     *                     {4.096} Runden.
+     *                     {@code 4.096} Runden.
      */
     private void verhashen( String passwort, int kostenFaktor ) {
 

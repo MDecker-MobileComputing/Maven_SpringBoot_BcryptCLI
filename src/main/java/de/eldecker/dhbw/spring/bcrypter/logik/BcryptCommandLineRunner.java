@@ -20,10 +20,15 @@ import org.springframework.stereotype.Service;
 @Profile("!non-interaktiv")
 public class BcryptCommandLineRunner implements CommandLineRunner {
 
-    /** Sicherer Zufallsgenerator für Salt-Erzeugung. */
+    /** 
+     * Sicherer Zufallsgenerator für Salt-Erzeugung. Der Salt fließt in
+     * den Hash-Algorithmus als Input ein und ist auch erzeugten Hash-Wert
+     * enthalten; er soll verhindern, dass sog. "Rainbow Tables" zum 
+     * Einsatz kommen.
+     */
     final SecureRandom _zufallsgenerator = new SecureRandom();
 
-    /** Text-Scanner für Einlesen Nutzereingaben. */
+    /** Text-Scanner für Einlesen Nutzereingaben von STDIN. */
     final Scanner _scanner = new Scanner( System.in );
 
 
@@ -64,7 +69,12 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      *
      * @param passwort Passwort, das verhasht werden soll
      *
-     * @param kostenFaktor Kostenfaktor für Bcrypt-Algorithmus, muss zwischen 4 und 31 liegen
+     * @param kostenFaktor Kostenfaktor für Bcrypt-Algorithmus, muss zwischen {@code 4} und 
+     *                     {@code 31} liegen;
+     *                     je höher der Wert, desto länger dauert die Berechnung.
+     *                     Die Anzahl der Runden für die Verhashung wird mit  
+     *                     {@code 2^kostenFaktor} berechnet, also für {@code 12} bspw. 
+     *                     {4.096} Runden. 
      */
     private void verhashen( String passwort, int kostenFaktor ) {
 

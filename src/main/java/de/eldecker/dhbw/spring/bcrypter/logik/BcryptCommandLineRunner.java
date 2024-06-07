@@ -11,7 +11,15 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 /**
+ * Die in dieser Bean-Klasse enthaltene {@code #run(String...)}-Methode wird nach Programmstart
+ * ausgeführt, weil die Klasse das Interface {@code CommandLineRunner} implementiert.
+ * Es kann in einer Anwendung auch mehreren {@code CommandLineRunner}-Beans geben, die dann
+ * alle nacheinander ausgeführt werden; mit Annotationen {@code Order} an den Bean-Klassen
+ * kann man die Reihenfolge steuern.
+ * <br><br>
+ *
  * In der GitHub-Actions-Pipeline wird der Build mit dem Profil {@code non-interaktiv} durchgeführt,
  * damit diese Klasse nicht ausgeführt wird (sie wartet auf eine Nutzereingabe, die bei einer
  * Pipeline-Ausführung nicht möglich ist).
@@ -20,10 +28,10 @@ import org.springframework.stereotype.Service;
 @Profile("!non-interaktiv")
 public class BcryptCommandLineRunner implements CommandLineRunner {
 
-    /** 
+    /**
      * Sicherer Zufallsgenerator für Salt-Erzeugung. Der Salt fließt in
      * den Hash-Algorithmus als Input ein und ist auch erzeugten Hash-Wert
-     * enthalten; er soll verhindern, dass sog. "Rainbow Tables" zum 
+     * enthalten; er soll verhindern, dass sog. "Rainbow Tables" zum
      * Einsatz kommen.
      */
     final SecureRandom _zufallsgenerator = new SecureRandom();
@@ -63,18 +71,17 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      *
      * <b>Beispielausgabe:</b>
      * <pre>
-     * Hashwert: $2b$10$SSNjbgJFzz239WHLCuOURew3/sft2QZVEWqbJfVCSSAAg8ZskjTxi
-     * Rechenzeit: 61 ms
+     * Hashwert mit Cost=16 in 3.478 ms berechnet: $2b$16$0Y959yqgpRsOEUnOXFLc9e4RBG2MVXywGVl70hLPcJkrW3rULM/H2
      * </pre>
      *
      * @param passwort Passwort, das verhasht werden soll
      *
-     * @param kostenFaktor Kostenfaktor für Bcrypt-Algorithmus, muss zwischen {@code 4} und 
+     * @param kostenFaktor Kostenfaktor für Bcrypt-Algorithmus, muss zwischen {@code 4} und
      *                     {@code 31} liegen;
      *                     je höher der Wert, desto länger dauert die Berechnung.
-     *                     Die Anzahl der Runden für die Verhashung wird mit  
-     *                     {@code 2^kostenFaktor} berechnet, also für {@code 12} bspw. 
-     *                     {4.096} Runden. 
+     *                     Die Anzahl der Runden für die Verhashung wird mit
+     *                     {@code 2^kostenFaktor} berechnet, also für {@code 12} bspw.
+     *                     {4.096} Runden.
      */
     private void verhashen( String passwort, int kostenFaktor ) {
 
@@ -93,13 +100,16 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
 
         final long millisekunden = ( zeitpunktEnde - zeitpunktStart ) / 1_000_000;
 
-        System.out.println( "\nHashwert: " + hashwert );
-        System.out.println( "Rechenzeit: " + millisekunden + " ms" );
+        final String str =
+                String.format( "\nHashwert mit Cost=%d in %,d ms berechnet: %s",
+                               kostenFaktor, millisekunden, hashwert );
+
+        System.out.println( str );
     }
 
 
     /**
-     * Liest Passwort von der Tastatur ein.
+     * Liest ein Passwort von der Tastatur ein.
      *
      * @return Optional ist leer, wenn Nutzer leeren String eingegeben hat; ansonsten
      *         ist das "getrimmte" Passwort enthalten.

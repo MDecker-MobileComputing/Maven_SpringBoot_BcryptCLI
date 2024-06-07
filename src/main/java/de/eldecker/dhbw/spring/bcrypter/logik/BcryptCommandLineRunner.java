@@ -19,54 +19,91 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
 
     /** Text-Scanner für Einlesen Nutzereingaben. */
     final Scanner _scanner = new Scanner( System.in );
-    
-    
+
+
     /**
      * Diese Methode wird beim Programmstart automatisch aufgerufen.
-     * Wenn diese Methode beendet ist, dann wird das Programm beendet. 
-     * 
+     * Wenn diese Methode beendet ist, dann wird das Programm beendet.
+     *
      * @param args Wird nicht ausgewertet
      */
     public void run( String... args ) throws Exception {
 
         final Optional<String> passwortOptional = passwortEinlesen();
         if ( passwortOptional.isEmpty() ) { return; }
-        
-    
+
+
         final String passwort = passwortOptional.get();
-                
-        final BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder( $2B, 4, _zufallsgenerator );
         
-        final String hashwert = bcryptEncoder.encode( passwort ) ;
-        
-        System.out.println( "\nHashwert: " + hashwert ); 
+        verhashen( passwort, 10 );
     }
-    
-    
+
+
+    /**
+     * Passwort mit Bcrypt verhashen und Ergebnis und Laufzeit auf Konsole ausgeben.
+     * <br><br>
+     * 
+     * Für die Messung der Laufzeit wird die Methode {@code System.nanoTime()} statt
+     * {@code currentTimeMillis()} verwendet, weil letztere falsche Ergebnisse liefert,
+     * wenn die Systemzeit während der Zeitmessung angepasst wird.
+     * <br><br> 
+     * 
+     * <b>Beispielausgabe:</b>
+     * <pre>
+     * Hashwert: $2b$10$SSNjbgJFzz239WHLCuOURew3/sft2QZVEWqbJfVCSSAAg8ZskjTxi
+     * Rechenzeit: 61 ms
+     * </pre>
+     *
+     * @param passwort Passwort, das verhasht werden soll
+     *
+     * @param kostenFaktor Kostenfaktor für Bcrypt-Algorithmus, muss zwischen 4 und 31 liegen
+     */
+    private void verhashen( String passwort, int kostenFaktor ) {
+        
+        if ( kostenFaktor < 4 || kostenFaktor > 31 ) {
+            
+            System.out.println( "Kostenfaktor " + kostenFaktor + " liegt nicht zwischen 4 und 31." ); 
+            return;
+        }
+        
+        final BCryptPasswordEncoder bcryptEncoder = 
+                new BCryptPasswordEncoder( $2B, kostenFaktor, _zufallsgenerator );
+
+        final long   zeitpunktStart = System.nanoTime();        
+        final String hashwert       = bcryptEncoder.encode( passwort ); // eigentliche Verhashung          
+        final long   zeitpunktEnde  = System.nanoTime();
+        
+        final long millisekunden = ( zeitpunktEnde - zeitpunktStart ) / 1_000_000;
+
+        System.out.println( "\nHashwert: " + hashwert );
+        System.out.println( "Rechenzeit: " + millisekunden + " ms\n" );
+    }
+
+
     /**
      * Liest Passwort von der Tastatur ein.
-     * 
+     *
      * @return Optional ist leer, wenn Nutzer leeren String eingegeben hat; ansonsten
-     *         ist das "getrimmte" Passwort enthalten.  
+     *         ist das "getrimmte" Passwort enthalten.
      */
     private Optional<String> passwortEinlesen() {
-     
-        System.out.print ( "\nPasswort zum Verhaschen mit Bcrypt eingeben > " );        
+
+        System.out.print ( "\nPasswort zum Verhaschen mit Bcrypt eingeben > " );
         String nutzereingabeString1 = _scanner.nextLine();
-        
+
         nutzereingabeString1 = nutzereingabeString1.trim();
         if ( nutzereingabeString1.isBlank() ) {
-            
+
             System.out.println( "FEHLER: Leeres Passwort eingegeben" );
             return Optional.empty();
-            
+
         } else {
-            
+
             final int anzZeichen = nutzereingabeString1.length();
             System.out.println( "\nAnzahl Zeichen von Passwort: " + anzZeichen );
-            
+
             return Optional.of( nutzereingabeString1 );
         }
     }
-    
+
 }

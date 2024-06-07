@@ -79,6 +79,13 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      * <pre>
      * Hashwert mit Cost=16 in 3.478ms berechnet: $2b$16$0Y959yqgpRsOEUnOXFLc9e4RBG2MVXywGVl70hLPcJkrW3rULM/H2
      * </pre>
+     * Aufbau Hashwert:
+     * <ul>
+     * <li>$2b: Version des Algorithmus, hier neueste Version von 2014</li>
+     * <li>$16$: Kostenfaktor
+     * <li>nächste 22 Zeichen: 128Bit-Salt, mit Base64 kodiert</li>
+     * <li>31 Zeichen: 184Bit-Hash-Wert, mit Base64 kodiert</li> 
+     * <ul>
      *
      * @param passwort Passwort, das verhasht werden soll
      *

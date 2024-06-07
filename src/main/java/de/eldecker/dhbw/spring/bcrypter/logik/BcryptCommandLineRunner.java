@@ -7,11 +7,17 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * In der GitHub-Actions-Pipeline wird der Build mit dem Profil {@code non-interaktiv} durchgeführt,
+ * damit diese Klasse nicht ausgeführt wird (sie wartet auf eine Nutzereingabe, die bei einer
+ * Pipeline-Ausführung nicht möglich ist).
+ */
 @Service
+@Profile("!non-interaktiv")
 public class BcryptCommandLineRunner implements CommandLineRunner {
 
     /** Sicherer Zufallsgenerator für Salt-Erzeugung. */
@@ -35,21 +41,21 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
         final String passwort = passwortOptional.get();
 
         for ( int i = 4; i < 31; i++ ) {
-        
+
             verhashen( passwort, i );
-        }        
+        }
     }
 
 
     /**
      * Passwort mit Bcrypt verhashen und Ergebnis und Laufzeit auf Konsole ausgeben.
      * <br><br>
-     * 
+     *
      * Für die Messung der Laufzeit wird die Methode {@code System.nanoTime()} statt
      * {@code currentTimeMillis()} verwendet, weil letztere falsche Ergebnisse liefert,
      * wenn die Systemzeit während der Zeitmessung angepasst wird.
-     * <br><br> 
-     * 
+     * <br><br>
+     *
      * <b>Beispielausgabe:</b>
      * <pre>
      * Hashwert: $2b$10$SSNjbgJFzz239WHLCuOURew3/sft2QZVEWqbJfVCSSAAg8ZskjTxi
@@ -61,20 +67,20 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
      * @param kostenFaktor Kostenfaktor für Bcrypt-Algorithmus, muss zwischen 4 und 31 liegen
      */
     private void verhashen( String passwort, int kostenFaktor ) {
-        
+
         if ( kostenFaktor < 4 || kostenFaktor > 31 ) {
-            
-            System.out.println( "Kostenfaktor " + kostenFaktor + " liegt nicht zwischen 4 und 31." ); 
+
+            System.out.println( "Kostenfaktor " + kostenFaktor + " liegt nicht zwischen 4 und 31." );
             return;
         }
-        
-        final BCryptPasswordEncoder bcryptEncoder = 
+
+        final BCryptPasswordEncoder bcryptEncoder =
                 new BCryptPasswordEncoder( $2B, kostenFaktor, _zufallsgenerator );
 
-        final long   zeitpunktStart = System.nanoTime();        
-        final String hashwert       = bcryptEncoder.encode( passwort ); // eigentliche Verhashung          
+        final long   zeitpunktStart = System.nanoTime();
+        final String hashwert       = bcryptEncoder.encode( passwort ); // eigentliche Verhashung
         final long   zeitpunktEnde  = System.nanoTime();
-        
+
         final long millisekunden = ( zeitpunktEnde - zeitpunktStart ) / 1_000_000;
 
         System.out.println( "\nHashwert: " + hashwert );

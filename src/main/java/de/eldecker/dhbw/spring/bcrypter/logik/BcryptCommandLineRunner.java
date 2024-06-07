@@ -32,10 +32,12 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
         final Optional<String> passwortOptional = passwortEinlesen();
         if ( passwortOptional.isEmpty() ) { return; }
 
-
         final String passwort = passwortOptional.get();
+
+        for ( int i = 4; i < 31; i++ ) {
         
-        verhashen( passwort, 10 );
+            verhashen( passwort, i );
+        }        
     }
 
 
@@ -76,7 +78,7 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
         final long millisekunden = ( zeitpunktEnde - zeitpunktStart ) / 1_000_000;
 
         System.out.println( "\nHashwert: " + hashwert );
-        System.out.println( "Rechenzeit: " + millisekunden + " ms\n" );
+        System.out.println( "Rechenzeit: " + millisekunden + " ms" );
     }
 
 

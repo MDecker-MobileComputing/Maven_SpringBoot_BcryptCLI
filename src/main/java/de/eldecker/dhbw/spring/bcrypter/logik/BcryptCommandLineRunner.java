@@ -41,10 +41,16 @@ public class BcryptCommandLineRunner implements CommandLineRunner {
 
 
     /**
+     * Es wird ein Passwort vom Nutzer angefragt (Eingabe per Tastatur)
+     * und dann ein Hash-Wert für alle zulässigen Kostenfaktoren von 4
+     * bis 31 berechnet. Der Hash-Wert wird zusammen mit der Laufzeit
+     * auf der Konsole ausgegeben.
+     * <br><br>
+     *
      * Diese Methode wird beim Programmstart automatisch aufgerufen.
      * Wenn diese Methode beendet ist, dann wird das Programm beendet.
      *
-     * @param args Wird nicht ausgewertet
+     * @param args Varargs für String, wird nicht ausgewertet
      */
     public void run( String... args ) throws Exception {
 

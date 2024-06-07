@@ -16,7 +16,7 @@ public class BcryptCommands {
     /** Sicherer Zufallsgenerator */
     final SecureRandom _zufallsgenerator = new SecureRandom();
 
-    @ShellMethod("Passwort mit Bcrypt verhashen")
+    @ShellMethod( key = "bcrypt", value = "Passwort mit Bcrypt verhashen" )
     public String bcrypt( @ShellOption String passwort,
                           @ShellOption(defaultValue = "10") int kostenFaktor ) {
 
